@@ -14,6 +14,7 @@ use BitWasp\Bitcoin\Address\Base58Address;
 use BitWasp\Bitcoin\Address\PayToPubKeyHashAddress;
 use BitWasp\Bitcoin\Address\ScriptHashAddress;
 use BitWasp\Bitcoin\Exceptions\UnrecognizedAddressException;
+use BitWasp\Bitcoin\Exceptions\UnrecognizedScriptForAddressException;
 use BitWasp\Bitcoin\Script\Script;
 use BitWasp\Bitcoin\Script\ScriptType;
 use BitWasp\Buffertools\Buffer;
@@ -121,7 +122,7 @@ class AddressCreatorTest extends AbstractTestCase
     {
         $reader = new AddressCreator(true);
 
-        $this->expectException(UnrecognizedAddressException::class);
+        $this->expectException(UnrecognizedScriptForAddressException::class);
         $this->expectExceptionMessage("Script type is not associated with an address");
 
         $reader->fromOutputScript(new Script(new Buffer("invalid")));

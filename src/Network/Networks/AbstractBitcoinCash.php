@@ -32,7 +32,7 @@ abstract class AbstractBitcoinCash extends Network implements BitcoinCashNetwork
     /**
      * @return string
      */
-    public function getSegwitBech32Prefix(): string
+    public function getSegwitBech32Prefix()
     {
         throw new \LogicException("Cannot use bech32 addresses with bitcoin cash");
     }
